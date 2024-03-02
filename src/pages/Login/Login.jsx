@@ -14,7 +14,7 @@ const Login = () => {
       .max(40, 'email too long')
       .required('Email must be not empty'),
     password: Yup.string()
-      .min(5, '5 symbols min')
+      .min(7, '7 symbols min')
       .max(17, 'password too long')
       .required('Password must be not empty'),
   });

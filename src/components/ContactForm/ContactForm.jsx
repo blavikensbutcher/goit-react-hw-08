@@ -28,8 +28,9 @@ export const ContactForm = () => {
         name: '',
         phone: '',
       }}
-      onSubmit={values => {
+      onSubmit={(values, action) => {
         dispatch(addContact({ id: Date.now(), ...values }));
+        action.resetForm();
       }}
       validationSchema={userSchema}
     >

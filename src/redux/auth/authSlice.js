@@ -2,7 +2,7 @@ import { persistReducer } from 'redux-persist';
 import { createSlice } from '@reduxjs/toolkit';
 
 import storage from 'redux-persist/lib/storage';
-import { register } from './operations';
+import { register, logIn, logOut, refreshUser } from './operations';
 
 
 const authSlice = createSlice({
@@ -17,12 +17,24 @@ const authSlice = createSlice({
         isRefreshing: false
     },
     extraReducers: (builder) => {
-        builder.addCase(register.pending, (state, action) => {
-            console.log(state);
-        }).addCase(register.fulfilled, (state, action) => {
-            console.log(state);
+        builder.addCase(register.fulfilled, (state, action) => {
+            state.user = action.payload.user;
+            state.token = action.payload.token;
+            state.isLoggedIn = true;
         }).addCase(register.rejected, (state, action) => {
             console.log(state);
+        }).addCase(logIn.fulfilled, (state, action) => {
+            state.user = action.payload.user;
+            state.token = action.payload.token;
+            state.isLoggedIn = true;
+        }).addCase(logIn.rejected, (state, action) => {
+            console.log('error')
+        }).addCase(logOut.fulfilled, (state) => {
+            state.user = {}
+            state.token = ''
+            state.isLoggedIn = false;
+        }).addCase(logOut.rejected, (state, action) => {
+            console.log('error')
         })
     }
 })
