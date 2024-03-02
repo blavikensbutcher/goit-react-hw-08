@@ -22,7 +22,6 @@ const authSlice = createSlice({
             state.token = action.payload.token;
             toast.success('Successfully registered!');
             state.isLoggedIn = true;
-
         }).addCase(register.rejected, (state, action) => {
             toast.error('Something went wrong! ' + action.payload);
         }).addCase(logIn.fulfilled, (state, action) => {
@@ -37,8 +36,10 @@ const authSlice = createSlice({
             state.token = ''
             state.isLoggedIn = false;
 
-        }).addCase(logOut.rejected, (state, action) => {
-            console.log('error')
+        }).addCase(refreshUser.fulfilled, (state, action) => {
+            state.user = action.payload;
+            state.token = action.payload.token;
+            state.isLoggedIn = true;
         })
     }
 })
