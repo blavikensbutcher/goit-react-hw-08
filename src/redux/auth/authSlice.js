@@ -18,11 +18,11 @@ const authSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(register.pending, (state, action) => {
-            state
+            console.log(state);
         }).addCase(register.fulfilled, (state, action) => {
-            state
+            console.log(state);
         }).addCase(register.rejected, (state, action) => {
-            state
+            console.log(state);
         })
     }
 })
