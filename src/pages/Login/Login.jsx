@@ -39,7 +39,7 @@ const Login = () => {
           <Field type="email" name="email" id={emailID}></Field>
           <ErrorMessage name="email" component="span" />
           <label htmlFor={passwordID}>Password:</label>
-          <Field type="password" name="password" id={passwordID}></Field>
+          <Field type="password" name="password" id={passwordID} autoComplete="password"></Field>
           <ErrorMessage name="password" component="span" />
           <button type="submit">Log In</button>
         </Form>

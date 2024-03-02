@@ -3,7 +3,7 @@ import styles from './ContactList.module.css';
 import { Contact } from '../Contact/Contact.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchContacts } from '../../api/api.js';
+import { fetchContacts } from '../../redux/auth/operations';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const ContactList = () => {
   return (
     <ul className={styles.box}>
       {filteredContacts.map(item => {
-        return <Contact name={item.name} phone={item.phone} id={item.id} key={item.id} />;
+        return <Contact name={item.name} number={item.number} id={item.id} key={item.id} />;
       })}
     </ul>
   );

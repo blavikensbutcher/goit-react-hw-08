@@ -2,20 +2,13 @@ import styles from './ContactForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useId } from 'react';
-import { addContact } from '../../api/api.js';
+import { addContact } from '../../api/api';
 import { useDispatch } from 'react-redux';
 
 export const ContactForm = () => {
   const userSchema = Yup.object().shape({
     name: Yup.string().min(3, '3 symbols min').max(50, 'Too long').required('Must be not empty'),
-    phone: Yup.string()
-      .min(3, 'Too short')
-      .max(20, 'Too long')
-      .matches(
-        /(^(1?)(\s?)([\s]?)((\(\d{3}\))|(\d{3}))([\s]?)([\s-]?)(\d{3})([\s-]?)(\d{4})+$)/gim,
-        'Not a phone'
-      )
-      .required('Must be not empty'),
+    number: Yup.string().min(3, 'Too short').max(20, 'Too long').required('Must be not empty'),
   });
 
   const nameID = useId();
@@ -26,10 +19,10 @@ export const ContactForm = () => {
     <Formik
       initialValues={{
         name: '',
-        phone: '',
+        number: '',
       }}
       onSubmit={(values, action) => {
-        dispatch(addContact({ id: Date.now(), ...values }));
+        dispatch(addContact({ ...values }));
         action.resetForm();
       }}
       validationSchema={userSchema}
@@ -39,8 +32,8 @@ export const ContactForm = () => {
         <Field type="text" name="name" id={nameID} className={styles.field}></Field>
         <ErrorMessage name="name" component="span" className={styles.error} />
         <label htmlFor={numberID}>Number:</label>
-        <Field type="text" name="phone" id={numberID} className={styles.field}></Field>
-        <ErrorMessage name="phone" component="span" className={styles.error} />
+        <Field type="text" name="number" id={numberID} className={styles.field}></Field>
+        <ErrorMessage name="number" component="span" className={styles.error} />
         <button type="submit" className={styles.btn}>
           Add contact
         </button>

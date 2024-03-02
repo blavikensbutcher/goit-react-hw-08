@@ -1,10 +1,10 @@
 import styles from './Contact.module.css';
 import { MdPeopleAlt } from 'react-icons/md';
 import { FaPhoneAlt } from 'react-icons/fa';
-import { deleteContact } from '../../api/api';
+import { deleteContact } from '../../redux/auth/operations';
 import { useDispatch } from 'react-redux';
 
-export const Contact = ({ id, name, phone }) => {
+export const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   return (
@@ -14,7 +14,7 @@ export const Contact = ({ id, name, phone }) => {
           <MdPeopleAlt size={15} /> {name}
         </p>
         <p className={styles.text}>
-          <FaPhoneAlt size={15} /> {phone}
+          <FaPhoneAlt size={15} /> {number}
         </p>
       </div>
       <div>
