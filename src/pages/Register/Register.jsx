@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import styles from './Register.module.css';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
+import { Button } from '@mui/material';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -40,15 +41,22 @@ const Register = () => {
       >
         <Form className={styles.container}>
           <label htmlFor={nameID}>Name:</label>
-          <Field type="text" name="name" id={nameID}></Field>
+          <Field type="text" name="name" id={nameID} className={styles.textField}></Field>
           <ErrorMessage name="name" component="span" />
           <label htmlFor={emailID}>Email:</label>
-          <Field type="email" name="email" id={emailID}></Field>
+          <Field type="email" name="email" id={emailID} className={styles.textField}></Field>
           <ErrorMessage name="email" component="span" />
           <label htmlFor={passwordID}>Password:</label>
-          <Field type="password" name="password" id={passwordID}></Field>
+          <Field
+            type="password"
+            name="password"
+            id={passwordID}
+            className={styles.textField}
+          ></Field>
           <ErrorMessage name="password" component="span" />
-          <button type="submit">Register</button>
+          <Button variant="contained" type="submit">
+            Register
+          </Button>
         </Form>
       </Formik>
     </>

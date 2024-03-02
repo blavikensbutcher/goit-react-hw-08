@@ -1,7 +1,4 @@
 import './App.css';
-// import { ContactList } from './ContactList/ContactList.jsx';
-// import { SearchBox } from './SearchBox/SearchBox.jsx';
-// import { ContactForm } from './ContactForm/ContactForm.jsx';
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { PrivateRoute } from './PrivateRoute';

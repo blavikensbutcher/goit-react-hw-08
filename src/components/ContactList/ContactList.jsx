@@ -3,7 +3,7 @@ import styles from './ContactList.module.css';
 import { Contact } from '../Contact/Contact.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchContacts } from '../../redux/auth/operations';
+import { fetchContacts } from '../../api/api.js';
 
 export const ContactList = () => {
   const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
-import { addContact, deleteContact, fetchContacts } from '../redux/auth/operations';
+import { addContact, deleteContact, fetchContacts } from '../api/api';
 
 const contactSlice = createSlice({
   name: 'contacts',

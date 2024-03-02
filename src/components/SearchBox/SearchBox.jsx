@@ -11,8 +11,8 @@ export const SearchBox = () => {
       <input
         type="text"
         id="value"
-        className={styles.value}
-        placeholder="search"
+        className={styles.textField}
+        placeholder="type name here"
         onChange={event => {
           dispatch(filter(event.target.value));
         }}
